@@ -117,8 +117,18 @@ class App extends Component {
         die.roll = this.rollDie(index);
         return die;
     });
+
+    return rolledDice;
     
-    this.setState({dice:rolledDice});
+  }
+  
+  rollAndAddAllDice = () => {
+    let rolledDice = this.rollAllDice();
+    let newTotal = rolledDice.reduce((total, dice) => total + dice.roll, 0);
+
+
+    this.setState({dice:rolledDice, total: newTotal});
+
   }
 
   
@@ -131,7 +141,7 @@ class App extends Component {
                           dice={this.state.dice}
                           addNewDice={this.addNewDice}
                          updateDiceCount={this.updateDiceCount}
-                         rollAll={this.rollAllDice}
+                          rollAll={this.rollAndAddAllDice}
                           />
         <DiceTable dice={this.state.dice} 
                     removeDiceAt={this.removeDiceAt}
