@@ -8,7 +8,7 @@ const DiceSelectorForm = (props) => {
         <tr>
             <td className="dice">
                 
-                    <label htmlFor={props.index}>Select dice type</label>
+                    <label htmlFor={props.index}>Select die type</label>
                     <select name={`dice-selector-${props.index}`} id={props.index}
                                                     className="dice-selector"
                                                     disabled={!props.dice.roll ? false : true}
@@ -31,7 +31,7 @@ const DiceSelectorForm = (props) => {
                 {!props.dice.roll ? "": props.dice.roll}
             </td>
             <td>
-                <button disabled={!props.dice.roll ? false : true} className="removeDice" onClick={props.handleRemove} >Remove Dice</button>
+                <button disabled={!props.dice.roll ? false : true} className="removeDice" onClick={props.handleRemove} >Remove Die</button>
             </td>
         </tr>
     )

@@ -8,8 +8,10 @@ const AppFormContainer = (props )=> {
         
             <DiceForm dice={props.dice} 
                         addNewDice={props.addNewDice} 
-                        updateDiceCount={props.updateDiceCount}/>
-            <button onClick={props.rollAll}>Roll them all!</button>   
+                        updateDiceCount={props.updateDiceCount}
+                        />
+            <button onClick={props.rollAll}
+                    disabled={props.unrolled.length === 0 ? true: false}>Roll them all!</button>   
             
         </header>
     );

@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import update from 'immutability-helper';
 
-// Styles
-import './App.css';
+
 
 // Components
 import BrandHeader from './components/BrandHeader';
@@ -50,7 +49,7 @@ class App extends Component {
   updateDiceCount = (evt) => {
     
     let newLength = evt.target.value;
-    console.log(newLength);
+  
     if(newLength > this.state.dice.length){
         let toAdd = newLength - this.state.dice.length;
         let newDice = [];
@@ -111,9 +110,9 @@ class App extends Component {
     });
   }
 
-  rollAllDice = () => {
-    let dice = this.state.dice.slice();
-    let rolledDice = dice.map((die, index) => {
+  rollAllUnrolledDice = () => {
+    let unRolledDice = this.unRolledDice();
+    let rolledDice = unRolledDice.map((die, index) => {
         die.roll = this.rollDie(index);
         return die;
     });
@@ -123,13 +122,21 @@ class App extends Component {
   }
   
   rollAndAddAllDice = () => {
-    let rolledDice = this.rollAllDice();
-    let newTotal = rolledDice.reduce((total, dice) => total + dice.roll, 0);
+    let diceNotToRoll = this.rolledDice();
+    
+    let newlyRolledDice = this.rollAllUnrolledDice();
+    let newTotal = this.state.total + newlyRolledDice.reduce((total, dice) => total + dice.roll, 0);
+    
+    
+    let updatedDice = [...diceNotToRoll, ...newlyRolledDice];
 
 
-    this.setState({dice:rolledDice, total: newTotal});
+    this.setState({dice:updatedDice, total: newTotal});
 
   }
+
+  unRolledDice = () => this.state.dice.filter((die) => die.roll === null);
+  rolledDice = () => this.state.dice.filter((die) => die.roll !== null);
 
   
 
@@ -142,6 +149,7 @@ class App extends Component {
                           addNewDice={this.addNewDice}
                          updateDiceCount={this.updateDiceCount}
                           rollAll={this.rollAndAddAllDice}
+                        unrolled={this.unRolledDice()}
                           />
         <DiceTable dice={this.state.dice} 
                     removeDiceAt={this.removeDiceAt}
