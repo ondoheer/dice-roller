@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#000000">
+    <!--
+      manifest.json provides metadata used when your web app is added to the
+      homescreen on Android. See https://developers.google.com/web/fundamentals/engage-and-retain/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+    
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>Dice Roller</title>
+
+    <style>
+      .main-container{
+        width: 80%;
+        
+        margin: 0 auto;
+      }
+
+      table{
+        width: 100%;
+        border: 2px solid cornflowerblue;
+        text-align: center
+      }
+
+      th{
+        background-color: coral;
+      }
+
+      .result-total{
+        line-height: 80px;
+        font-weight: bold;
+      }
+
+      header{
+        margin-bottom: 50px;
+      }
+
+      h3{
+        text-align: center;
+      }
+      .title-container{
+        padding: 50px 0;
+      }
+
+      main{
+        background-color:blanchedalmond;     
+        height: 100vh;
+      }
+
+    </style>
+  </head>
+  <body>
+    <noscript>
+      You need to enable JavaScript to run this app.
+    </noscript>
+    
+    <main>
+      <div id="root"></div>
+      <div class="main-container">
+        <!-- <div class="title-container">
+            <h3>Dice Roller Extr3m3</h3>
+        </div> -->
+        <!-- <header class="container-header">
+
+          <form class="dice-form">
+            <label for="number-dice">Select the number of dices you want to roll</label>
+            <input type="number" name="number-dice">
+            <button class="select-dice-submit" type="submit">Select</button>
+          </form>
+        </header> -->
+        <!-- <table>
+          <tr>
+              <th>Dice</th>
+              <th>Results</th>
+          </tr>
+          <tr>
+            <td class="dice">
+              <label for="">Select dice type</label>
+              <select name="dice-selector-1" id="" class="dice-selector">
+                <option value="4">4</option>
+                <option value="6">6</option>
+                <option value="8">8</option>
+                <option value="10">10</option>
+                <option value="12">12</option>
+                <option value="20">20</option>
+              </select>
+              <button class="dice-roller">Roll</button>
+            </td>
+            <td class="dice-result">
+
+            </td>
+          </tr>
+          <tr class="result-total">
+            <td>Total</td>
+            <td >---</td>
+          </tr>
+        </table> -->
+        
+
+      </div>
+    </main>
+
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  </body>
+</html>
