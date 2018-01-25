@@ -67,7 +67,7 @@ class App extends Component {
 
   render() {
 
-    // why am I doing this???
+    // unpacking of the props added by the mapStateToProps function
     const {dispatch, dice, total} = this.props;
 
     // bind action creators
