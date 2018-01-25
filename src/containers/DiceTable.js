@@ -17,15 +17,16 @@ const DiceTable = (props)=> {
                 <th>Results</th>
                 <th>Remove Dice</th>
             </tr>
-            {props.dice.map((dice, index) => 
+            {props.dice}
+            {/* {props.dice.map((die, index) => 
             
-                <DiceSelectorForm dice={dice} key={index} index={index} 
+                <DiceSelectorForm die={die} key={index} index={index} 
                         handleRemove={() => props.removeDiceAt(index)}
                         handleDiceSides={(evt) => props.changeDiceSidesAt(evt, index)}
                         handleRoll={() => props.rollDie(index)}
                         
                  />
-            )}
+            )} */}
             
             <RollsResults total={props.total} />
             </tbody>

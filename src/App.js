@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import update from 'immutability-helper';
-
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as DiceActionCreators from './actions/dice';
 
 
 // Components
 import BrandHeader from './components/BrandHeader';
 import AppFormContainer from './containers/AppFormContainer';
 import DiceTable from './containers/DiceTable';
+import DiceSelectorForm from './components/DiceSelectorForm';
 
 class App extends Component {
 
@@ -36,7 +39,7 @@ class App extends Component {
   }
 
   // Add new die
-  addNewDice = () => {    
+  addNewDie = () => {    
        
     let newState = update(this.state, {
       dice: {$push: [this.createDie()]}
@@ -141,17 +144,32 @@ class App extends Component {
   
 
   render() {
+
+    const {dispatch, dice} = this.props;
+
+    const addDie = bindActionCreators(DiceActionCreators.addDie, dispatch);
+    const removeDie = bindActionCreators(DiceActionCreators.removeDie, dispatch);
+    const rollDie = bindActionCreators(DiceActionCreators.rollDie, dispatch);
+
+    const diceComponents = dice.map((die, index) => (
+            <DiceSelectorForm 
+                die={die} key={index} index={index}
+                handleRemove={removeDie}
+                handleDiceSides={(evt) => this.changeDiceSidesAt(evt, index)}
+                handleRoll={rollDie}/>
+    ));
+
     return (
       <div className="App main-container">
         <BrandHeader  />
         <AppFormContainer 
                           dice={this.state.dice}
-                          addNewDice={this.addNewDice}
+                          addNewDie={this.addNewDie}
                          updateDiceCount={this.updateDiceCount}
                           rollAll={this.rollAndAddAllDice}
                         unrolled={this.unRolledDice()}
                           />
-        <DiceTable dice={this.state.dice} 
+        <DiceTable dice={diceComponents} 
                     removeDiceAt={this.removeDiceAt}
                     changeDiceSidesAt={this.changeDiceSidesAt}
                     rollDie={this.setNewRollResult}
@@ -162,4 +180,12 @@ class App extends Component {
   }
 }
 
-export default App;
+
+const mapStateToProps = state => (
+  {
+    dice: state
+  }
+)
+
+
+export default connect(mapStateToProps)(App);

@@ -7,7 +7,7 @@ const AppFormContainer = (props )=> {
         <header className="container-header">
         
             <DiceForm dice={props.dice} 
-                        addNewDice={props.addNewDice} 
+                        addNewDie={props.addNewDie} 
                         updateDiceCount={props.updateDiceCount}
                         />
             <button onClick={props.rollAll}
