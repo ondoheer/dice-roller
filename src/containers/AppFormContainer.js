@@ -6,12 +6,12 @@ const AppFormContainer = (props )=> {
     return (
         <header className="container-header">
         
-            <DiceForm dice={props.dice} 
+            <DiceForm diceLength={props.dice.length} 
                         addNewDie={props.addNewDie} 
                         updateDiceCount={props.updateDiceCount}
                         />
             <button onClick={props.rollAll}
-                    disabled={props.unrolled.length === 0 ? true: false}>Roll them all!</button>   
+                    disabled={props.dice.filter((die)=> die.roll === null ).length === 0 ? true: false}>Roll them all!</button>   
             
         </header>
     );

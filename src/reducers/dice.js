@@ -1,5 +1,5 @@
 import * as DieActions from '../actionTypes/dice';
-
+import {range} from 'lodash';
 import {createDie, rollDie} from '../helpers/dice';
 
 const initialState = [
@@ -31,17 +31,56 @@ export default function(state=initialState, action){
             ];
 
         case DieActions.ROLL_DIE:
-            console.log()
+            
             return state.map((die, index) => {
+                
                 if(index === action.index){
                     return {
                         ...die,
-                        roll: rollDie(action.index, die.value)
+                        roll: rollDie(die.value)
                     }
                 }
                 return die;
             });
         
+        case DieActions.CHANGE_DIE_SIDES:
+            return state.map((die, index) => {
+                if(index === action.index){
+                    return {...die,
+                            value: action.sides
+                    }
+                }
+                return die;
+            });
+
+        case DieActions.UPDATE_DICE_COUNT:
+            
+            if(action.number > state.length){ // add more dice
+                let toAdd = action.number - state.length;
+                let newDice = range(0, toAdd).map(() => createDie());               
+
+                return [
+                    ...state,
+                    ...newDice
+                ];
+            } else if (action.number < state.length){ // remove extra dice
+                return [...state.slice(0, action.number)];
+            }
+            break;
+
+        case DieActions.ROLL_ALL:
+            
+            return state.map((die) => {
+                if(!die.roll){
+                    return {
+                        ...die,
+                        roll: rollDie(die.value)
+                    }
+                } 
+                return die;
+            })
+            
+            
         default:
             return state;
     }

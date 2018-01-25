@@ -10,7 +10,7 @@ export const removeDie = index => {
     
     return {
         type: DieActions.REMOVE_DIE,
-        index // this is equal to index: index
+        index 
     }
 }
 
@@ -20,5 +20,26 @@ export const rollDie = (index, sides) => {
         type: DieActions.ROLL_DIE,
         index,
         sides
+    }
+}
+
+export const updateSides = (index, sides) =>{
+    return {
+        type: DieActions.CHANGE_DIE_SIDES,
+        index,
+        sides
+    }
+}
+
+export const updateDiceCount = (number) =>{
+    return {
+        type: DieActions.UPDATE_DICE_COUNT,
+        number
+    }
+}
+
+export const rollAllDice = () =>{
+    return {
+        type: DieActions.ROLL_ALL
     }
 }

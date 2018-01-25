@@ -9,12 +9,16 @@ const DiceSelectorForm = (props) => {
             <td className="dice">
                 
                     <label htmlFor={props.index}># Sides</label>
-                    <select name={`dice-selector-${props.index}`} id={props.index}
-                                                    className="dice-selector"
-                                                    disabled={!props.die.roll ? false : true}
-                                                    onChange={props.handleDiceSides}
-                                                    value={props.die.value}
-                                                    >
+                    <select 
+                            name={`dice-selector-${props.index}`} 
+                            id={props.index}
+                            className="dice-selector"
+                            disabled={!props.die.roll ? false : true}
+                            onChange={(evt) => 
+                                props.changeDieSide(props.index, evt.target.value)}
+                            
+                            value={props.die.value}
+                            >
                         <option value="4">4</option>
                         <option value="6">6</option>
                         <option value="8">8</option>
