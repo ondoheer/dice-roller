@@ -11,7 +11,8 @@ import registerServiceWorker from './registerServiceWorker';
 
 
 const store = createStore(
-    DiceReducer
+    DiceReducer,
+    window.devToolsExtension && window.devToolsExtension()
 )
 
 ReactDOM.render(

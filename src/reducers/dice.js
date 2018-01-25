@@ -31,11 +31,12 @@ export default function(state=initialState, action){
             ];
 
         case DieActions.ROLL_DIE:
+            console.log()
             return state.map((die, index) => {
                 if(index === action.index){
                     return {
                         ...die,
-                        roll: rollDie(action.index)
+                        roll: rollDie(action.index, die.value)
                     }
                 }
                 return die;

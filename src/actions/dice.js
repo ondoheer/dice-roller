@@ -7,16 +7,18 @@ export const addDie = () => {
 }
 
 export const removeDie = index => {
+    
     return {
         type: DieActions.REMOVE_DIE,
         index // this is equal to index: index
     }
 }
 
-export const rollDie = index => {
-    console.log("roll die clicked");
+export const rollDie = (index, sides) => {
+    
     return {
         type: DieActions.ROLL_DIE,
-        index
+        index,
+        sides
     }
 }

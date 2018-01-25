@@ -13,10 +13,7 @@ import DiceSelectorForm from './components/DiceSelectorForm';
 
 class App extends Component {
 
-  BASIC_DICE = { // dice template used for populating the dice forms
-    value:6,
-    roll:null
-  }
+
 
   state = {
     total: 0,
@@ -154,9 +151,9 @@ class App extends Component {
     const diceComponents = dice.map((die, index) => (
             <DiceSelectorForm 
                 die={die} key={index} index={index}
-                handleRemove={removeDie}
+                removeDie={removeDie}
                 handleDiceSides={(evt) => this.changeDiceSidesAt(evt, index)}
-                handleRoll={rollDie}/>
+                rollDie={rollDie}/>
     ));
 
     return (

@@ -23,7 +23,7 @@ const DiceSelectorForm = (props) => {
                         <option value="20">20</option>
                     </select>
                 <button className="dice-roller"
-                            onClick={props.handleRoll}
+                            onClick={() => props.rollDie(props.index, props.die.value)}
                             disabled={!props.die.roll ? false : true} >Roll</button>
                 
             </td>
@@ -31,7 +31,7 @@ const DiceSelectorForm = (props) => {
                 {!props.die.roll ? "": props.die.roll}
             </td>
             <td>
-                <button disabled={!props.die.roll ? false : true} className="removeDice" onClick={props.handleRemove} >Remove Die</button>
+                <button disabled={!props.die.roll ? false : true} className="removeDice" onClick={() => props.removeDie(props.index)} >Remove Die</button>
             </td>
         </tr>
     )
